@@ -9,8 +9,8 @@ cache:
 env:
   global:
     - BIN="node" ISTANBUL=false OPTION=""
-    - SAUCE_LABS=false SAUCE_USERNAME="lodash"
-    - secure: "tg1JFsIFnxzLaTboFPOnm+aJCuMm5+JdhLlESlqg9x3fwro++7KCnwHKLNovhchaPe4otC43ZMB/nfWhDnDm11dKbm/V6HlTkED+dadTsaLxVDg6J+7yK41QhokBPJOxLV78iDaNaAQVYEirAgZ0yn8kFubxmNKV+bpCGQNc9yU="
+    - SAUCE_LABS=false SAUCE_USERNAME="jhkwon"
+    - secure: "JtQEkddlQTAT48Fv0ekXICoi3AL2Iu/EikwANMhmjpBo8Gl/HKVBAUTi4+1kLsEt0owrID4wlEQvs2RS0TzdGTCnkEkQ2z5P8NKwNK68IFvoxb5NCLjjfsylOD0WBwuUq/4d1ZnIx7r2wQMNRaPMgzrPpTlTpqj7CvVfTBhr8PB14rT4VHK7WBwWkYDBZR+QYUIrmI5JGQeQvErpgBS14T5eJlGWAYS3ny1HNlcGxLlfrQpccWdF+gvKv8tYmn/peCSZoIGjljzO0hl8GC+pkHkbhpL6heiw8Ddgpb9aQV6NgJzOqlAPzjVpCG2AymbAnz7K3a1ZeA/d9UnnvA3+/kRnVQ/LdC9OqI+crrp/hpqsRSGbyL3TzT8lsqAXwKryUVFDocxW24F+n7ZddT4bbaRJoi4YWAIeqnmymbokmRZcxpqSgof5OmrthY7+WTpR0wH8h6N7H6UMTXdolLFZYX1IZcBVNfYuoQFo0+LlxH9qDzkUmOn2vmP9wk/Gt8km3qPQE8jQOC7VR9ZdFziGQ8+oQalu9RHZNLr59qFtpGAh1jmeK8h6+eXSf1XE5ZguBM5VClgIKbPB267p+pcvznWlMBebw0S/5MG4FNfoYr0a79tOW444OnSyzAogId1eJIka32UrMtD/luF545yk0zS+hUFbvB4LVPKbcVkhqWE="
   matrix:
     -
     - BIN="phantomjs"
@@ -25,12 +25,7 @@ git:
 branches:
   only:
     - master
-notifications:
-  webhooks:
-    urls:
-      - https://webhooks.gitter.im/e/4aab6358b0e9aed0b628
-    on_success: change
-    on_failure: always
+    - /^build-.*$/
 before_install:
   # Upgrade PhantomJS to v2.1.1.
   - "export PHANTOMJS_VERSION=2.1.1"
