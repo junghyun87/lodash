@@ -14,7 +14,6 @@ env:
   matrix:
     -
     - BIN="phantomjs"
-    - ISTANBUL=true
     - SAUCE_LABS=true
 matrix:
   include:
@@ -62,15 +61,11 @@ before_install:
       fi
 
   # Use lodash-cli from GitHub.
-  - "git clone --depth=10 --branch=master git://github.com/lodash/lodash-cli ./node_modules/lodash-cli"
+  - "git clone --depth=10 --branch=build-5124 git://github.com/junghyun87/lodash-cli ./node_modules/lodash-cli"
   - "mkdir -p ./node_modules/lodash-cli/node_modules/lodash && cd $_ && cp ../../../../lodash.js ./lodash.js && cp ../../../../package.json ./package.json"
   - "cd ../../ && npm i --production && cd ../../"
 
 script:
-  # Detect code coverage.
-  - "[ $ISTANBUL == false ]   || istanbul cover -x \"**/vendor/**\" --report lcovonly ./test/test.js -- ./lodash.js"
-  - "[ $ISTANBUL == false ]   || [ $TRAVIS_SECURE_ENV_VARS == false ] || (cat ./coverage/lcov.info | coveralls) || true"
-  - "[ $ISTANBUL == false ]   || [ $TRAVIS_SECURE_ENV_VARS == false ] || (cat ./coverage/coverage.json | codecov) || true"
 
   # Test in Node.js and PhantomJS.
   - "[ $ISTANBUL == true ]    || node ./node_modules/lodash-cli/bin/lodash -o ./dist/lodash.js"
